@@ -1,0 +1,28 @@
+<nav id="navbar" class="navbar order-last order-lg-0">
+    <ul>
+        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+        <li class="dropdown"><a href="#"><span>Districts</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                {% for district in districts %}
+                    <li class="dropdown">
+                        <a href="{{ path('district_show', {'id': district.id}) }}">
+                            <span>{{ district.name }}</span> <i class="bi bi-chevron-right"></i>
+                        </a>
+                        <ul>
+                            {% for restaurant in district.restaurants %}
+                                <li>
+                                    <a href="{{ path('restaurant_show', {'id': restaurant.id}) }}">
+                                        {{ restaurant.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+                <li><a href="{{ path('app_index') }}">See more districts</a></li>
+            </ul>
+        </li>
+        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+    </ul>
+    <i class="bi bi-list mobile-nav-toggle"></i>
+</nav><!-- .navbar -->
