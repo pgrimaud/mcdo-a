@@ -14,17 +14,11 @@
 
             <div class="row">
                 {% for district in districts %}
-                    <div class="col-lg-4 mt-4">
-                        <div class="box" data-aos="zoom-in" data-aos-delay="100">
-                            <span>01</span>
-                            <h4>
-                                <a href="{{ path('district_show', {'id': district.id}) }}">
-                                    {{ district.name }}
-                                </a>
-                            </h4>
-                            <p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et consectetur ducimus vero placeat</p>
-                        </div>
-                    </div>
+                    {% include 'card/why-us-section.html.twig' with {
+                        id: district.id,
+                        name: district.name,
+                        url: path('district_show', {'id': district.id}),
+                    } %}
                 {% endfor %}
             </div>
 
